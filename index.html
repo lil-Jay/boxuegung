@@ -1,119 +1,58 @@
 <!DOCTYPE html>
-<html ng-app="myApp" lang="en">
+<html ng-app="boxueguApp" lang="en">
 
 <head>
     <meta charset="UTF-8">
     <title>angular博学谷后台</title>
-    <?php include($_SERVER['DOCUMENT_ROOT'] . '/html/common/style.html')?>
+    <!--引入样式-->
+    <div ng-include="'/html/common/style.html'"></div>
+    <style>
+        [ng-cloak]{
+            display: none!important;
+        }
+    </style>
 </head>
 
-<body>
-    <!-- 侧边栏 -->
-    <div class="aside" ng-controller="asideCtrl">
-        <!-- 个人资料 -->
-        <div class="profile">
-            <!-- 头像 -->
-            <div class="avatar img-circle">
-                <img src="./img/default.png">
-            </div>
-            <h4>布头儿</h4>
-        </div>
-        <!-- 导航菜单 -->
-        <div class="navs">
-            <ul class="list-unstyled">
-                <li>
-                    <a href="#/init" class="active">
-                        <i class="fa fa-home"></i> 仪表盘
-                    </a>
-                </li>
-                <li>
-                    <a href="#/userlist">
-                        <i class="fa fa-bell"></i> 用户管理
-                    </a>
-                </li>
-                <li>
-                    <a href="#/teacherlist">
-                        <i class="fa fa-bell"></i> 讲师管理
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:;">
-                        <i class="fa fa-cog"></i> 课程管理
-                        <i class="arrow fa fa-angle-right"></i>
-                    </a>
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="./html/course/add.html">
-                                 课程添加
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./html/course/list.html">
-                                课程列表
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./html/course/category_list.html">
-                                课程分类
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
+<body ng-cloak ng-controller="boxueguCtrl">
+    <!--引入侧边栏-->
+    <div ng-include="'/html/common/aside.html'"></div>
+
+
+
 
     <!-- 主题 -->
     <div class="main">
         <div class="container-fluid">
 
-            <!-- 头部 -->
-            <div class="header" ng-controller="headerCtrl">
-                <nav class="navbar navbar-custom">
-                    <div class="navbar-header">
-                        <a href="javascript:;" class="navbar-brand">
-                            <i class="fa fa-navicon"></i>
-                        </a>
-                    </div>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#/settings">
-                                <i class="fa fa-user"></i> 个人中心
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <i class="fa fa-sign-out"></i> 退出
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+            <!--引入头部-->
+            <div ng-include="'/html/common/header.html'"></div>
 
-            <!--活动模板-->
-            <div ng-view></div>
+            <!--主体模板-->
+            <div ui-view></div>
 
         </div>
     </div>
 
-    <!--记载jquery,bootstrap文件-->
+
     <script src="/lib/jquery/jquery.js"></script>
-    <script src="/lib/bootstrap/js/bootstrap.js"></script>
-
-    <!--加载angular主文件-->
     <script src="/lib/angular/angular.js"></script>
-    <script src="/lib/angular-route/angular-route.js"></script>
-    <!--加载个模块文件-->
-    <script src="/js/common/aside.js"></script>
+    <script src="/lib/angular-ui-router/release/angular-ui-router.js"></script>
+
+    <!--加载requireJS-->
+    <script src="/lib/requirejs/require.js" data-async="true"></script>
+
+    <!--加载各个模块-->
     <script src="/js/common/header.js"></script>
-    <script src="/js/home/settings.js"></script>
+    <script src="/js/common/aside.js"></script>
     <script src="/js/home/init.js"></script>
-    <script src="/js/user/userlist.js"></script>
+    <script src="/js/home/settings.js"></script>
     <script src="/js/teacher/teacherlist.js"></script>
+    <script src="/js/user/userlist.js"></script>
+    <script src="/js/home/login.js"></script>
 
 
-    <!--记载入口文件-->
-    <script src="/js/common/route.js"></script>
+    <script src="/js/common/app.js"></script>
+
 
 
 </body>
