@@ -17,6 +17,7 @@
                     }
                 })
                 .then(function (data) {
+                    console.log(data)
                     if (data.status == 200) {
                         var userInfo = JSON.stringify(data.data.result);
                         localStorage.setItem('userInfo', userInfo);
